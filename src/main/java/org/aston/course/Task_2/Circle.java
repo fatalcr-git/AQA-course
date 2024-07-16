@@ -1,14 +1,11 @@
 package org.aston.course.Task_2;
 
-public class Circle implements IShape {
+public class Circle extends Figure implements IShape {
     private int radius;
-    private String fillColor;
-    private String borderColor;
 
     public Circle(int radius, String fillColor, String borderColor) {
+        super(fillColor, borderColor);
         this.radius = radius;
-        this.fillColor = fillColor;
-        this.borderColor = borderColor;
     }
 
     @Override
@@ -19,16 +16,6 @@ public class Circle implements IShape {
     @Override
     public double area() {
         return Math.PI * Math.pow(radius, 2);
-    }
-
-    @Override
-    public String getFillColor() {
-        return fillColor;
-    }
-
-    @Override
-    public String getBorderColor() {
-        return borderColor;
     }
 
     public void printInfo() {

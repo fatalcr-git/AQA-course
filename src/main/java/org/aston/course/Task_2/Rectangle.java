@@ -1,16 +1,13 @@
 package org.aston.course.Task_2;
 
-public class Rectangle implements IShape {
+public class Rectangle extends Figure implements IShape {
     private int width;
     private int length;
-    private String fillColor;
-    private String borderColor;
 
     public Rectangle(int width, int length, String fillColor, String borderColor) {
+        super(fillColor, borderColor);
         this.width = width;
         this.length = length;
-        this.fillColor = fillColor;
-        this.borderColor = borderColor;
     }
 
     @Override
@@ -21,16 +18,6 @@ public class Rectangle implements IShape {
     @Override
     public double area() {
         return width * length;
-    }
-
-    @Override
-    public String getFillColor() {
-        return fillColor;
-    }
-
-    @Override
-    public String getBorderColor() {
-        return borderColor;
     }
 
     public void printInfo() {
