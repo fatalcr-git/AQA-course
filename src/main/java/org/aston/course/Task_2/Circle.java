@@ -1,6 +1,6 @@
 package org.aston.course.Task_2;
 
-public class Circle extends Figure implements IShape {
+public class Circle extends Figure implements IPrintable, IArea, IPerimeter {
     private int radius;
 
     public Circle(int radius, String fillColor, String borderColor) {

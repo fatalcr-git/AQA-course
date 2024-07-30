@@ -1,6 +1,6 @@
 package org.aston.course.Task_2;
 
-public class Triangle extends Figure implements IShape {
+public class Triangle extends Figure implements IPrintable, IArea, IPerimeter {
     private int sideA;
     private int sideB;
     private int sideC;

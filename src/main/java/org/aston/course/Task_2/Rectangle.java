@@ -1,6 +1,6 @@
 package org.aston.course.Task_2;
 
-public class Rectangle extends Figure implements IShape {
+public class Rectangle extends Figure implements IPrintable, IArea, IPerimeter {
     private int width;
     private int length;
 
