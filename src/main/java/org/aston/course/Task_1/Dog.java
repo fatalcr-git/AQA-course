@@ -12,7 +12,7 @@ public class Dog extends Animal {
 
     @Override
     public void run(int distance) {
-        if (distance > MAX_RUN_DISTANCE) {
+        if (distance < 0 || distance > MAX_RUN_DISTANCE) {
             System.out.println(name + " не может пробежать " + distance + " м.");
         } else {
             System.out.println(name + " пробежал " + distance + " м.");
@@ -21,7 +21,7 @@ public class Dog extends Animal {
 
     @Override
     public void swim(int distance) {
-        if (distance > MAX_SWIM_DISTANCE) {
+        if (distance < 0 || distance > MAX_SWIM_DISTANCE) {
             System.out.println(name + " не может проплыть " + distance + " м.");
         } else {
             System.out.println(name + " проплыл " + distance + " м.");
