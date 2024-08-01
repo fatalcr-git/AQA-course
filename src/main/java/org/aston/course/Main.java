@@ -7,16 +7,16 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Task 1:");
         String[] words = {"Green", "Blue", "Red", "Purple", "Yellow", "White", "Black", "Gray", "Green", "Blue"};
-        ArrayList<String> arr = new ArrayList<>(Arrays.asList(words));
-        ArrayWork.printUniqueValues(arr);
-        ArrayWork.printCountOfValues(arr);
+        System.out.println(ArrayWork.getUniqueValues(words));
+        System.out.println(ArrayWork.getCountOfValues(words));
+
 
         System.out.println("Task 2:");
         PhoneBook phoneBook = new PhoneBook();
-        phoneBook.add("+375331233232", "Ivanov");
-        phoneBook.add("+375333211212", "Petrov");
-        phoneBook.add("+375334443322", "Gustoy");
-        phoneBook.add("+375339090909", "Ivanov");
+        phoneBook.add("Ivanov","+375331233232");
+        phoneBook.add("Petrov","+375333211212");
+        phoneBook.add("Ivanov","+375334443322");
+        phoneBook.add("Gustoy","+375339090909");
 
         System.out.println(phoneBook.get("Petrov"));
         System.out.println(phoneBook.get("Ivanov"));

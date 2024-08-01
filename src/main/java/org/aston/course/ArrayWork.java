@@ -1,23 +1,20 @@
 package org.aston.course;
 
-import java.util.ArrayList;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ArrayWork {
 
-    public static void printUniqueValues(ArrayList<String> array) {
-        Set<String> unique = Set.copyOf(array);
-        for (String s : unique) {
-            System.out.print(s + " ");
-        }
-        System.out.println();
+    public static List<String> getUniqueValues(String[] array) {
+        var unique = new HashSet<>(Arrays.asList(array));
+        return new ArrayList<>(unique);
     }
 
-    public static void printCountOfValues(ArrayList<String> array) {
-        Stream<String> stream = array.stream();
-        stream.collect(Collectors.groupingBy(word -> word, Collectors.counting()))
-                .forEach((word, count) -> System.out.println(word + ": " + count));
+    public static Map<String, Integer> getCountOfValues(String[] array) {
+        Stream<String> stream = Arrays.stream(array);
+        Map<String, Integer> map = new HashMap<>();
+        map = stream.collect(Collectors.toMap(s->s, s-> 1, Integer::sum));
+        return map;
     }
 }

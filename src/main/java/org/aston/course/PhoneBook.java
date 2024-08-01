@@ -1,30 +1,24 @@
 package org.aston.course;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
 public class PhoneBook {
-    Map<String, String> phoneMap = new HashMap<>();
+    Map<String, List<String>> phoneMap = new HashMap<>();
 
-    public void add(String phoneNumber, String lastName) {
-        phoneMap.put(phoneNumber, lastName);
-    }
-
-    public void printNumberByLastName(String lastName) {
-        for (var entry : phoneMap.entrySet()) {
-            if (entry.getValue().equals(lastName)) {
-                System.out.println(entry.getKey());
-            }
+    public void add(String lastName, String phoneNumber) {
+        if (phoneMap.containsKey(lastName)) {
+            phoneMap.get(lastName).add(phoneNumber);
+        } else {
+            phoneMap.put(lastName, new ArrayList<>());
+            phoneMap.get(lastName).add(phoneNumber);
         }
     }
 
     public String get(String lastName) {
-        StringBuilder output = new StringBuilder(new String()).append(lastName).append(":");
-        for (var entry : phoneMap.entrySet()) {
-            if (entry.getValue().equals(lastName)) {
-                output.append("\n").append(entry.getKey());
-            }
-        }
+        List<String> output = phoneMap.get(lastName);
         return output.toString();
     }
 }
