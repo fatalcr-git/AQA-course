@@ -3,6 +3,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
+
 import java.util.concurrent.TimeUnit;
 
 public class MtsTest {
@@ -35,11 +37,13 @@ public class MtsTest {
 
     @Test
     public void logosTest() {
-        Assert.assertTrue(mainPage.isVisaImgDisplayed());
-        Assert.assertTrue(mainPage.isMasterCardImgDisplayed());
-        Assert.assertTrue(mainPage.isMasterCardSecureImgDisplayed());
-        Assert.assertTrue(mainPage.isVerifiedByVisaImgDisplayed());
-        Assert.assertTrue(mainPage.isBelkartImgDisplayed());
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(mainPage.isVisaImgDisplayed());
+        softAssert.assertTrue(mainPage.isMasterCardImgDisplayed());
+        softAssert.assertTrue(mainPage.isMasterCardSecureImgDisplayed());
+        softAssert.assertTrue(mainPage.isVerifiedByVisaImgDisplayed());
+        softAssert.assertTrue(mainPage.isBelkartImgDisplayed());
+        softAssert.assertAll();
     }
 
     @Test()
@@ -47,6 +51,11 @@ public class MtsTest {
         String expectedLink = "https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/";
         mainPage.clickAboutServiceButton();
         Assert.assertEquals(driver.getCurrentUrl(), expectedLink);
+
+    }
+
+    @AfterMethod
+    public void afterAboutServiceButtonTest() {
         mainPage.goToMainPage();
     }
 
@@ -61,8 +70,5 @@ public class MtsTest {
         mainPage.inputEmail(testMail);
         mainPage.clickContinueButton();
         Assert.assertTrue(mainPage.isPaidFrameDisplayed());
-        driver.switchTo().frame(0);
-        mainPage.clickCancelButton();
-        driver.switchTo().parentFrame();
     }
 }
