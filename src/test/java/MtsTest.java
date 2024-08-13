@@ -15,7 +15,6 @@ public class MtsTest {
     public void setUp() {
         WebDriverManager.chromedriver().browserVersion("126.0").setup();
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.get("https://www.mts.by");
