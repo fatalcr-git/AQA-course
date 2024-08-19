@@ -2,6 +2,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.startsWith;
 
 public class PostmanTest {
     private static String BASE_URL = "https://postman-echo.com/";
@@ -13,8 +14,19 @@ public class PostmanTest {
                 .get(BASE_URL + "get?foo1=bar1&foo2=bar2")
                 .then()
                 .statusCode(200)
+                .body("headers.host", equalTo("postman-echo.com"))
+                .body("headers.x-request-start", startsWith("t="))
+                .body("headers.connection", equalTo("close"))
+                .body("headers.x-forwarded-proto", equalTo("https"))
+                .body("headers.x-forwarded-port", equalTo("443"))
+                .body("headers.x-amzn-trace-id", startsWith("Root="))
+                .body("headers.user-agent", startsWith("Apache-HttpClient/4.5.13"))
+                .body("headers.accept", equalTo("*/*"))
+                .body("url", equalTo("https://postman-echo.com/get?foo1=bar1&foo2=bar2"))
+
                 .body("args.foo1", equalTo("bar1"))
                 .body("args.foo2", equalTo("bar2"));
+
     }
 
     @Test
@@ -26,6 +38,16 @@ public class PostmanTest {
                 .post(BASE_URL + "post")
                 .then()
                 .statusCode(200)
+                .body("headers.host", equalTo("postman-echo.com"))
+                .body("headers.x-request-start", startsWith("t="))
+                .body("headers.connection", equalTo("close"))
+                .body("headers.x-forwarded-proto", equalTo("https"))
+                .body("headers.x-forwarded-port", equalTo("443"))
+                .body("headers.x-amzn-trace-id", startsWith("Root="))
+                .body("headers.user-agent", startsWith("Apache-HttpClient/4.5.13"))
+                .body("headers.accept", equalTo("*/*"))
+                .body("url", equalTo("https://postman-echo.com/post"))
+
                 .body("data", equalTo("{\"name\":\"Jhon\"," +
                         "\"age\":20}"));
     }
@@ -39,6 +61,16 @@ public class PostmanTest {
                 .post(BASE_URL + "post")
                 .then()
                 .statusCode(200)
+                .body("headers.host", equalTo("postman-echo.com"))
+                .body("headers.x-request-start", startsWith("t="))
+                .body("headers.connection", equalTo("close"))
+                .body("headers.x-forwarded-proto", equalTo("https"))
+                .body("headers.x-forwarded-port", equalTo("443"))
+                .body("headers.x-amzn-trace-id", startsWith("Root="))
+                .body("headers.user-agent", startsWith("Apache-HttpClient/4.5.13"))
+                .body("headers.accept", equalTo("*/*"))
+                .body("url", equalTo("https://postman-echo.com/post"))
+
                 .body("form.name", equalTo("Jhony"))
                 .body("form.age", equalTo("15"));
     }
@@ -51,6 +83,16 @@ public class PostmanTest {
                 .put(BASE_URL + "put")
                 .then()
                 .statusCode(200)
+                .body("headers.host", equalTo("postman-echo.com"))
+                .body("headers.x-request-start", startsWith("t="))
+                .body("headers.connection", equalTo("close"))
+                .body("headers.x-forwarded-proto", equalTo("https"))
+                .body("headers.x-forwarded-port", equalTo("443"))
+                .body("headers.x-amzn-trace-id", startsWith("Root="))
+                .body("headers.user-agent", startsWith("Apache-HttpClient/4.5.13"))
+                .body("headers.accept", equalTo("*/*"))
+                .body("url", equalTo("https://postman-echo.com/put"))
+
                 .body("form.boo", equalTo("apple"));
     }
 
@@ -62,6 +104,16 @@ public class PostmanTest {
                 .patch(BASE_URL + "patch")
                 .then()
                 .statusCode(200)
+                .body("headers.host", equalTo("postman-echo.com"))
+                .body("headers.x-request-start", startsWith("t="))
+                .body("headers.connection", equalTo("close"))
+                .body("headers.x-forwarded-proto", equalTo("https"))
+                .body("headers.x-forwarded-port", equalTo("443"))
+                .body("headers.x-amzn-trace-id", startsWith("Root="))
+                .body("headers.user-agent", startsWith("Apache-HttpClient/4.5.13"))
+                .body("headers.accept", equalTo("*/*"))
+                .body("url", equalTo("https://postman-echo.com/patch"))
+
                 .body("form.boo", equalTo("orange"));
     }
 
@@ -73,6 +125,16 @@ public class PostmanTest {
                 .delete(BASE_URL + "delete")
                 .then()
                 .statusCode(200)
+                .body("headers.host", equalTo("postman-echo.com"))
+                .body("headers.x-request-start", startsWith("t="))
+                .body("headers.connection", equalTo("close"))
+                .body("headers.x-forwarded-proto", equalTo("https"))
+                .body("headers.x-forwarded-port", equalTo("443"))
+                .body("headers.x-amzn-trace-id", startsWith("Root="))
+                .body("headers.user-agent", startsWith("Apache-HttpClient/4.5.13"))
+                .body("headers.accept", equalTo("*/*"))
+                .body("url", equalTo("https://postman-echo.com/delete"))
+
                 .body("form.boo", equalTo("orange"));
     }
 }
