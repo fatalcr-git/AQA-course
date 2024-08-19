@@ -72,7 +72,9 @@ public class PostmanTest {
                 .body("url", equalTo("https://postman-echo.com/post"))
 
                 .body("form.name", equalTo("Jhony"))
-                .body("form.age", equalTo("15"));
+                .body("form.age", equalTo("15"))
+                .body("json.name", equalTo("Jhony"))
+                .body("json.age", equalTo("15"));
     }
 
     @Test
@@ -93,7 +95,8 @@ public class PostmanTest {
                 .body("headers.accept", equalTo("*/*"))
                 .body("url", equalTo("https://postman-echo.com/put"))
 
-                .body("form.boo", equalTo("apple"));
+                .body("form.boo", equalTo("apple"))
+                .body("json.boo", equalTo("apple"));
     }
 
     @Test
@@ -114,7 +117,8 @@ public class PostmanTest {
                 .body("headers.accept", equalTo("*/*"))
                 .body("url", equalTo("https://postman-echo.com/patch"))
 
-                .body("form.boo", equalTo("orange"));
+                .body("form.boo", equalTo("orange"))
+                .body("json.boo", equalTo("orange"));
     }
 
     @Test
@@ -135,6 +139,7 @@ public class PostmanTest {
                 .body("headers.accept", equalTo("*/*"))
                 .body("url", equalTo("https://postman-echo.com/delete"))
 
-                .body("form.boo", equalTo("orange"));
+                .body("form.boo", equalTo("orange"))
+                .body("json.boo", equalTo("orange"));
     }
 }
